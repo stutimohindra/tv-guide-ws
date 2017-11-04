@@ -1,0 +1,32 @@
+'use strict'
+var db = require('../dbUtils')
+var mysql = require('mysql');
+
+var getDetails = {
+
+    fetch: function (options,cb) {
+        var query = "select * from t_user_fav where user_id="+options.userId;
+        db.executeQuery(query, function (err, result) {
+            if (!err && result) {
+                cb(null, result);
+            } else {
+                console.log("Error while fetching details ");
+                console.log(err);
+                cb(err);
+            }
+        });
+    },
+    insert: function (options,cb) {
+        var query = "insert into t_user_fav(user_id,channel_id) values("+options.userId+","+options.channelId+")";
+        db.executeQuery(query, function (err, result) {
+            if (!err && result) {
+                cb(null, result);
+            } else {
+                console.log("Error while fetching details ");
+                console.log(err);
+                cb(err);
+            }
+        });
+    }
+}
+module.exports = getDetails
