@@ -37,11 +37,10 @@ var fetchData={
                 res.send(new Error('Error occurred while inserting fav'));
             }
             else if(!error && success){
-                console.log(success)
                 res.status(200).json({
                     error: 0,
                     message: "successfully fetched user fav",
-                    data: success[0]
+                    data: success
                 })
             };
         });
