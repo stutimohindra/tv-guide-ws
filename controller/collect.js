@@ -1,19 +1,20 @@
 'use strict'
 var collect = {
     collectRequestDataUser: function collectRequestData(req, res, next) {
+        var data = JSON.parse(req.body)
         var opt = {
-            facebookId:req.body.facebookId,
-            name:req.body.name,
+            facebookId:data.facebookId,
+            name:data.name,
         }
         req.collectRequestDataUser = opt;
         next();
     },
     collectRequestDataUserFav: function collectRequestDataUserFav(req, res, next) {
-
+        var data = JSON.parse(req.body)
         var opt = {
-            facebookId:req.body.facebookId,
-            name:req.body.name,
-            channelId:req.body.channelId
+            facebookId:data.facebookId,
+            name:data.name,
+            channelId:data.channelId
         }
         req.collectRequestDataUserFav = opt;
         next();
@@ -26,6 +27,15 @@ var collect = {
         }
         req.collectRequestDataGetUserFav = opt;
         next();
-    }
+    },
+    collectRequestDataUserFavUpdate: function collectRequestDataUserFavUpdate(req, res, next) {
+        var opt = {
+            facebookId:req.params.facebookId,
+            name:req.params.name,
+            channelId:req.params.channelId
+        }
+        req.collectRequestDataUserFavUpdate = opt;
+        next();
+    },
 }
 module.exports = collect;

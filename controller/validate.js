@@ -2,7 +2,9 @@
 var validate = {
     validateRequestDataUser: function validateRequestData(req, res, next) {
 
-        if (req.body.facebookId != undefined && req.body.name != undefined ){
+        var data = JSON.parse(req.body);
+
+        if (data.facebookId != undefined && data.name != undefined ){
             next();
         }else {
             res.status(400).json({
@@ -13,7 +15,9 @@ var validate = {
 
     },
     validateRequestDataUserFav:function validateRequestDataUserFav(req,res,next) {
-        if (req.body.facebookId != undefined && req.body.name != undefined && req.body.channelId !=undefined){
+        var data = JSON.parse(req.body);
+
+        if (data.facebookId != undefined && data.name != undefined && data.channelId !=undefined){
             next();
         }else {
             res.status(400).json({
@@ -31,7 +35,16 @@ var validate = {
                 message: "Missing params"
             })
         }
+    },
+    validateRequestDataGetUserFavUpdate:function validateRequestDataGetUserFavUpdate(req,res,next) {
+        if (req.params.facebookId != undefined && req.params.name != undefined && req.params.channelId != undefined){
+            next();
+        }else {
+            res.status(400).json({
+                error: -1,
+                message: "Missing params"
+            })
+        }
     }
-
 }
 module.exports = validate;
