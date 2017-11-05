@@ -46,9 +46,9 @@ var fetchData={
         });
     },
     createUser: function createUser(req, res, next) {
-        var opt ={
+        var opt = {
             facebookId: req.collectRequestDataUser.facebookId,
-            name:req.collectRequestDataUser.name
+            name: req.collectRequestDataUser.name
         }
         user.fetch(opt,function (error,result) {
             if(error){
