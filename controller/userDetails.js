@@ -50,17 +50,36 @@ var fetchData={
             facebookId: req.collectRequestDataUser.facebookId,
             name:req.collectRequestDataUser.name
         }
-        user.insert(opt,function (error,result) {
+        user.fetch(opt,function (error,result) {
             if(error){
-                
-            }else if(!error && result){
+                res.status(500).json({
+                    error: -1,
+                    message: "error getting user for while creating user:"+error,
+                })
+            }else if(!error && result.length >0){
                 res.status(200).json({
                     error: 0,
-                    message: "successfully inserted user",
-                    id: result.insertId
+                    message: "user exists",
+                    id: result[0].id
+                })
+            }else if(!error && result == 0){
+                user.insert(opt,function (error,result) {
+                    if(error){
+                        res.status(500).json({
+                            error: -1,
+                            message: "error while creating user:"+error,
+                        })
+                    }else if(!error && result){
+                        res.status(200).json({
+                            error: 0,
+                            message: "successfully inserted user",
+                            id: result.insertId
+                        })
+                    }
                 })
             }
         })
+
     },
     createUserFav : function (req,res,next) {
         var opt ={

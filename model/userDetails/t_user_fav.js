@@ -16,6 +16,7 @@ var getDetails = {
             }
         });
     },
+
     insert: function (options,cb) {
         var query = "insert into t_user_fav(user_id,channel_id) values("+options.userId+","+options.channelId+")";
         db.executeQuery(query, function (err, result) {
