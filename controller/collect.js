@@ -4,7 +4,7 @@ thees functions collect data from the front end
  */
 var collect = {
     collectRequestDataUser: function collectRequestData(req, res, next) {
-        var data = JSON.parse(req.body)
+        var data = (req.body)
         var opt = {
             facebookId:data.facebookId,
             name:data.name,
@@ -13,7 +13,7 @@ var collect = {
         next();
     },
     collectRequestDataUserFav: function collectRequestDataUserFav(req, res, next) {
-        var data = JSON.parse(req.body)
+        var data = (req.body)
         var opt = {
             facebookId:data.facebookId,
             name:data.name,

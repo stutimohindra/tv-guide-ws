@@ -5,7 +5,7 @@ These functions validate if all the expected params are being sent by the front 
 var validate = {
     validateRequestDataUser: function validateRequestData(req, res, next) {
 
-        var data = JSON.parse(req.body);
+        var data = (req.body);
 
         if (data.facebookId != undefined && data.name != undefined ){
             next();
@@ -18,7 +18,7 @@ var validate = {
 
     },
     validateRequestDataUserFav:function validateRequestDataUserFav(req,res,next) {
-        var data = JSON.parse(req.body);
+        var data = (req.body);
 
         if (data.facebookId != undefined && data.name != undefined && data.channelId !=undefined){
             next();

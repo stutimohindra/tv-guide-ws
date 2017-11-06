@@ -85,7 +85,6 @@ var fetchData={
 
     },
     createUserFav : function (req,res,next) {
-        console.log("fav",req.collectRequestDataUserFav)
         var opt ={
             facebookId: req.collectRequestDataUserFav.facebookId,
             name:req.collectRequestDataUserFav.name
