@@ -1,4 +1,7 @@
 'use strict'
+/*
+thees functions collect data from the front end
+ */
 var collect = {
     collectRequestDataUser: function collectRequestData(req, res, next) {
         var data = JSON.parse(req.body)

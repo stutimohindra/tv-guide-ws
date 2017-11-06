@@ -1,4 +1,7 @@
 'use strict'
+/*
+These functions validate if all the expected params are being sent by the front end
+ */
 var validate = {
     validateRequestDataUser: function validateRequestData(req, res, next) {
 

@@ -2,7 +2,9 @@
 var userFav = require('../model/userDetails/t_user_fav')
 var user = require('../model/userDetails/t_users')
 var async = require('async')
-
+/*
+The controller talks to the model and renders the output
+ */
 var fetchData={
     getUserFav:function getUserFav(req,res,next) {
         var opt ={

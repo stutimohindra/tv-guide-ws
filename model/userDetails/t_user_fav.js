@@ -1,7 +1,9 @@
 'use strict'
 var db = require('../dbUtils')
 var mysql = require('mysql');
-
+/*
+The model functions for t_user_fav table
+ */
 var getDetails = {
 
     fetch: function (options,cb) {

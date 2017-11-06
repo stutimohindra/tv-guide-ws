@@ -1,6 +1,9 @@
 'use strict';
 var mysql = require('mysql');
 var configDetails = require('../config')
+/*
+Utilies class for the db
+ */
 var dbutil = {
     executeQuery: function queryExecution(customQuery,params,cb) {
         this.getConnection(function (err, connection) {

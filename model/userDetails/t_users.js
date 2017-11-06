@@ -1,7 +1,9 @@
 'use strict'
 var db = require('../dbUtils')
 var mysql = require('mysql');
-
+/*
+Model class for t_users
+ */
 var userDetails = {
 
     fetch: function (options, cb) {
