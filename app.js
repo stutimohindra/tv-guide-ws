@@ -14,7 +14,10 @@ var collect = require('./controller/collect');
 var validateParams = require('./controller/validate');
 var userDetails = require('./controller/userDetails');
 var config = require('./config')
-
+// var corsOptions = {
+//   origin: 'http://localhost:8080',
+//   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+// }
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,7 +26,6 @@ app.set('view engine', 'jade');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
-app.use(bodyParser.text());
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: false }));

@@ -151,13 +151,13 @@ var fetchData={
                     userId: result[0].id,
                     channelId: req.collectRequestDataUserFavUpdate.channelId
                 }
-                userFav.delete(opt,function (error,res) {
+                userFav.delete(opt,function (error,resp) {
                     if(error){
                         res.status(500).json({
                             error: -1,
                             message: "error getting user for updating fav:" + error,
                         })
-                    }else if(!error && res){
+                    }else if(!error && resp){
                         res.status(200).json({
                             error: 0,
                             message: "updated user fav",
