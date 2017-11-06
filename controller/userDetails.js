@@ -131,59 +131,41 @@ var fetchData={
         });
     },
     updateUserFav: function (req,res,next) {
-        var opt ={
+        var opt = {
             facebookId: req.collectRequestDataUserFavUpdate.facebookId,
             name: req.collectRequestDataUserFavUpdate.name
         }
-        user.fetch(opt,function (error,result) {
-            if(error){
+        user.fetch(opt, function (error, result) {
+            if (error) {
                 res.status(500).json({
                     error: -1,
-                    message: "error getting user for updating fav:"+error,
+                    message: "error getting user for updating fav:" + error,
                 })
-            }else if(!error && result.length == 0){
+            } else if (!error && result.length == 0) {
                 res.status(200).json({
                     error: 0,
                     message: "user does not exist",
                 })
-            }else if(!error && result.length > 0){
-                var opt ={
+            } else if (!error && result.length > 0) {
+                var opt = {
                     userId: result[0].id,
                     channelId: req.collectRequestDataUserFavUpdate.channelId
                 }
-                userFav.fetchOnChannel(opt,function (error,result) {
+                userFav.delete(opt,function (error,res) {
                     if(error){
                         res.status(500).json({
                             error: -1,
-                            message: "error while creating user:"+error,
+                            message: "error getting user for updating fav:" + error,
                         })
-                    }else if(!error && result.length ==0){
+                    }else if(!error && res){
                         res.status(200).json({
                             error: 0,
-                            message: "no fav for user",
-                        })
-                    }else if(!error && result.length > 0){
-                        var opt = {
-                            id: result[0].id
-                        }
-                        userFav.delete(opt,function (error,result) {
-                            if(error){
-                                res.status(500).json({
-                                    error: -1,
-                                    message: "no fav for user",
-                                })
-                            }else if(!error && result){
-                                res.status(200).json({
-                                    error: 0,
-                                    message: "updated user",
-                                })
-                            }
+                            message: "updated user fav",
                         })
                     }
                 })
             }
         })
     }
-
 }
 module.exports = fetchData;

@@ -43,7 +43,7 @@ var getDetails = {
         });
     },
     delete: function (options,cb) {
-        var query = "delete from t_user_fav where id="+options.id;
+        var query = "delete from t_user_fav where user_id="+options.userId+" and channel_id="+options.channelId;
         db.executeQuery(query, function (err, result) {
             if (!err && result) {
                 cb(null, result);
